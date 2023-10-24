@@ -1,28 +1,39 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class Currency_con extends StatelessWidget {
-  const Currency_con({super.key});
+class CurrencyConverter extends StatelessWidget {
+  const CurrencyConverter({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blueGrey,
+        appBar: AppBar(
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.blueGrey,
+          title: const Text(
+            "Currency Converter",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
         body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(25.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  '0',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 45,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                TextField(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                '0',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: TextField(
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: InputDecoration(
@@ -44,9 +55,39 @@ class Currency_con extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: TextButton(
+                  onPressed: () {
+                    if (kDebugMode) {
+                      print('okka clickd me ');
+                    }
+                  },
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.black54,
+                      foregroundColor: Colors.white,
+                      fixedSize: const Size(200, 50),
+                      minimumSize: const Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15))),
+                  // style: ButtonStyle(
+                  //     elevation: const MaterialStatePropertyAll(40),
+                  //     backgroundColor:
+                  //         MaterialStateProperty.all(Colors.black54),
+                  //     foregroundColor: MaterialStateProperty.all(Colors.white),
+                  //     fixedSize: MaterialStateProperty.all(const Size(200, 50)),
+                  //     minimumSize: MaterialStateProperty.all(
+                  //         const Size(double.infinity, 50)),
+                  //     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(15)))
+                  //         ),
+                  child: const Text("Convert"),
+                ),
+              ),
+            ],
           ),
         ));
   }
