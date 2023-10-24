@@ -1,8 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CurrencyConverter extends StatelessWidget {
+class CurrencyConverter extends StatefulWidget {
   const CurrencyConverter({super.key});
+
+  @override
+  State<CurrencyConverter> createState() => _CurrencyConverterState();
+}
+
+class _CurrencyConverterState extends State<CurrencyConverter> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +27,9 @@ class CurrencyConverter extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                '0',
-                style: TextStyle(
+              Text(
+                result.toString(),
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 45,
                     fontWeight: FontWeight.bold),
@@ -34,6 +41,7 @@ class CurrencyConverter extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: TextField(
+                  controller: textEditingController,
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   decoration: InputDecoration(
@@ -62,9 +70,8 @@ class CurrencyConverter extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: TextButton(
                   onPressed: () {
-                    if (kDebugMode) {
-                      print('okka clickd me ');
-                    }
+                    result = double.parse(textEditingController.text) * 81;
+                    setState(() {});
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.black54,
